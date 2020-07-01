@@ -5,7 +5,11 @@ const morgan = require('morgan');
 
 dontenv.config({path : './config/config.env'});
 
+const transactions = require('./routes/transaction');
+
 const app = express();
+
+app.use('/api/v1/transactions', transactions)
 
 app.get('/',(req,res) => res.send('Hello'));
 
