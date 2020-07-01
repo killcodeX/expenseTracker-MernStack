@@ -14,7 +14,7 @@ exports.getTransactions = async (req, res, next) => {
             data : transactions
         })
     } catch(err){
-        return res.send(500).json({
+        return res.status(500).json({
             success : false,
             error : 'Server Error'
         })
@@ -27,7 +27,31 @@ exports.getTransactions = async (req, res, next) => {
 // @access  Public
 
 exports.addTransactions = async (req, res, next) => {
-    res.send('POST transactions');
+    try{
+        const { text, amount } = req.body;
+
+        const transactions = await Transaction.create(req.body);
+
+        return res.status(201).json({
+            success : true,
+            data : transactions
+        })
+    } catch(err){
+        if(err.name === 'ValidationError'){
+            const messages = Object.values(err.errors).map(val => val.message);
+
+            return res.status(400).json({
+                success : false,
+                error : messages
+            })
+
+        } else{
+            return res.status(500).json({
+                success : false,
+                data : 'Server Error'
+            })
+        }
+    }
 }
 
 
