@@ -2,8 +2,11 @@ const express = require('express');
 const dontenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
+const connectDB = require('./config/db')
 
 dontenv.config({path : './config/config.env'});
+
+connectDB();
 
 const transactions = require('./routes/transaction');
 
