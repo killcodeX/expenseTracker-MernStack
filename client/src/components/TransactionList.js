@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/StateManager';
 import Transaction from './Transaction';
 
 export default function TransactionList() {
 
-    const { transactions } = useContext(GlobalContext);
+    const { transactions, getTransactions } = useContext(GlobalContext);
+
+    useEffect(() => {
+        getTransactions();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
+    
 
     return (
         <>
