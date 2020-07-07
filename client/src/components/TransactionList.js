@@ -18,7 +18,7 @@ export default function TransactionList() {
             <div id='transactionList'>
                 <ul className="list">
                     {transactions.map(transaction => (
-                        <Transaction key={Transaction.id} transaction={transaction}/>
+                        <Transaction key={transaction._id} transaction={transaction} />
                     ))}
                 </ul>
             </div>

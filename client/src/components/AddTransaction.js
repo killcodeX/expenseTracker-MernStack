@@ -11,15 +11,14 @@ export default function AddTransaction() {
     let acceptValues = (e) => {
         e.preventDefault();
         const newTransaction = {
-            id : Math.floor(Math.random() * 100000),
             text,
             amount : +amount
         }
 
         addTransaction(newTransaction);
 
-        setText( ' ')
-        setAmount(0)
+        // setText( ' ')
+        // setAmount(0)
 
     }
 
@@ -28,27 +27,27 @@ export default function AddTransaction() {
             <h3 className='title is-4 has-text-centered'>Add new Transaction</h3>
               <form onSubmit={acceptValues}>
                 <div className='box' id='addTransaction'>
-                    <div class="field">
-                        <label class="label">Text</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter description..." />
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-keyboard"></i>
+                    <div className="field">
+                        <label className="label">Text</label>
+                        <div className="control has-icons-left has-icons-right">
+                            <input className="input" type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter description..." />
+                            <span className="icon is-small is-left">
+                                <i className="fas fa-keyboard"></i>
                             </span>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Amount</label>
-                        <label class="label">(negative-expense, positive-income)</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-dollar-sign"></i>
+                    <div className="field">
+                        <label className="label" htmlFor="amount">Amount</label>
+                        <label className="label">(negative-expense, positive-income)</label>
+                        <div className="control has-icons-left has-icons-right">
+                            <input className="input" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
+                            <span className="icon is-small is-left">
+                                <i className="fas fa-dollar-sign"></i>
                             </span>
                         </div>
                     </div>
                 </div>
-                <button class="button is-link" type='submit'>Add Transaction</button>
+                <button className="button is-link" type='submit'>Add Transaction</button>
               </form>  
         </>
     )

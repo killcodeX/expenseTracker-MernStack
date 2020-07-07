@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/StateManager';
+import { numberWithCommas } from '../utills/format';
 
 export default function Balance() {
 
@@ -11,7 +12,7 @@ export default function Balance() {
     return (
         <>
             <h4 className='title has-text-centered'>Your Balance</h4>
-            <h1 className='title is-2 has-text-centered'>${total}</h1>
+            <h1 className='title is-2 has-text-centered'>${numberWithCommas(total)}</h1>
         </>
     )
 }
